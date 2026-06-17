@@ -2,7 +2,27 @@ console.log("Conectado");
 
 const contenedor = document.querySelector(".contenedorGrilla");
 const boton = document.querySelector(".pizarra");
-const limpiar = document.querySelector(".borrar");
+const limpiar = document.querySelector(".limpiar");
+const borrar = document.querySelector(".borrar");
+const dibujar = document.querySelector(".dibujar");
+
+let clickIzquierdo = false;
+window.addEventListener("mousedown", function() {
+    clickIzquierdo = true;
+});
+window.addEventListener("mouseup", function() {
+    clickIzquierdo = false;
+});
+
+let modoBorrador = false;
+borrar.addEventListener("click", function() {
+    modoBorrador = true;    
+});
+
+let modoDibujo = false;
+dibujar.addEventListener("click", function() {
+    modoBorrador = false;
+});
 
 function crearCuadrado() {
     let grilla = document.createElement("div");
@@ -10,7 +30,13 @@ function crearCuadrado() {
 
      // Pintando cada vez que pasa el mouse
     grilla.addEventListener("mousemove", function() {
-        grilla.setAttribute("style", "background-color: gray");
+        if(clickIzquierdo) {
+            grilla.setAttribute("style", "background-color: black");
+
+            if(modoBorrador) {
+                grilla.setAttribute("style", "background-color: transparent");
+            }
+        }
     })
     contenedor.appendChild(grilla);
 }
@@ -36,5 +62,7 @@ let pizarra = boton.addEventListener("click", function () {
 let limpiarPizarra = limpiar.addEventListener("click", function () {
     contenedor.innerHTML = "";
 })
+
+
 
 

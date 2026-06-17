@@ -1,9 +1,53 @@
 body {
     background-color: antiquewhite;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.cabecera {
+    background-color: white;
+    border: 3px solid brown;
+    margin-bottom: 2rem;
+
+    h1 {
+        text-align: center;
+    }
+
+    .frase {
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: 500;
+        font-style: italic;
+    }
+
+    .descripcion {
+        justify-self: start;
+        padding: 1rem;
+    }
 }
 
 .contenedorGrilla {
     width: 100rem;
     height: 100rem;
     display: grid;
+}
+
+.controladores {
+    display: flex;
+    justify-content: space-evenly;
+
+    .boton {
+        border: none;
+        background-color: salmon;
+        color: white;
+        font-weight: 700;
+        font-size: 1.5rem;
+        border: 1px solid white;
+        border-radius: .5rem;
+
+        &:hover {
+            background-color: white;
+            color: salmon;
+            border: 1px solid salmon;
+        }
+    }
 }
