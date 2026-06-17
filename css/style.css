@@ -2,10 +2,8 @@ body {
     background-color: antiquewhite;
 }
 
-.contendorGrilla {
+.contenedorGrilla {
     width: 100rem;
     height: 100rem;
     display: grid;
-    grid-template-columns: repeat(64, 1fr);
-    grid-template-rows: repeat(64, 1fr);
 }

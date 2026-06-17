@@ -1,9 +1,10 @@
 console.log("Conectado");
 
-
+const contenedor = document.querySelector(".contenedorGrilla");
+const boton = document.querySelector(".pizarra");
+const limpiar = document.querySelector(".borrar");
 
 function crearCuadrado() {
-    const contendor = document.querySelector(".contendorGrilla");
     let grilla = document.createElement("div");
     grilla.classList.add("cuadradito");
 
@@ -11,10 +12,29 @@ function crearCuadrado() {
     grilla.addEventListener("mousemove", function() {
         grilla.setAttribute("style", "background-color: gray");
     })
-    contendor.appendChild(grilla);
+    contenedor.appendChild(grilla);
 }
 
 // iterando para que se creen los divs
-for (let i = 0; i < 10000; i++) {
-    crearCuadrado();
+let tamañoPizarra = "";
+function iterarCuadrados() {
+    for (let i = 0; i < 100000; i++) {
+        crearCuadrado();
+    }
 }
+
+
+let pizarra = boton.addEventListener("click", function () {
+    tamañoPizarra = prompt("Inserte el tamaño de pixeles para la pizarra:", "64");
+
+    contenedor.style.gridTemplateColumns = `repeat(${tamañoPizarra}, 1fr)`;
+    contenedor.style.gridTemplateRows = `repeat(${tamañoPizarra}, 1fr)`;
+    contenedor.innerHTML = "";
+    iterarCuadrados();
+});
+
+let limpiarPizarra = limpiar.addEventListener("click", function () {
+    contenedor.innerHTML = "";
+})
+
+
